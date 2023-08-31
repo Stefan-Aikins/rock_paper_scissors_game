@@ -1,6 +1,6 @@
 import random
 
-# rock represented by fist ascii
+# rock ascii
 rock = """  
   _______
 ---'   ____)
@@ -29,34 +29,38 @@ scissors = """
 ---.__(___)
 """
 
-pick = input(
-    f"""rock {rock}   
-    
-    paper{paper}    
-    
-    scissors{scissors}   
-    Enter: [r] for rock   
-           [p] for paper   
-           [s] for scissors"
-    """
-).lower()
+# options to choose from
+options = ["rock", "paper", "scissors"]
+win_msg = "You win!!!"
+loss_msg = "You lose!!!"
+draw_msg = "its a draw!!!"
 
-while (pick != "r") or (pick != "p") or (pick != "s"):
+while True:
+    CPU = options[random.randint(1, 3) - 1]
     pick = input(
         f"""rock {rock}   
     
     paper{paper}    
     
     scissors{scissors}   
-    Enter: [r] for rock   
-           [p] for scissors    
-           [s] for scissors"
+    Enter:  rock | paper | scissors
     """
     ).lower()
 
-# options to choose from
-options = ["r", "p", "s"]
-CPU = options[random.randint(0, len(options))]
-win_msg = "You win"
-loss_msg = "You lose"
-draw_msg = "its a draw"
+    # when user picks rock
+    if pick == "rock":
+        print(f"user picks => rock {rock}")
+        for p in options:
+            if p == CPU:
+                print(f"CPU picks => {p} \n")
+        if CPU == options[1]:
+            print(loss_msg)
+            break
+        elif CPU == options[2]:
+            print(win_msg)
+            break
+        else:
+            print(draw_msg)
+            break
+    else:
+        print("gameover")
