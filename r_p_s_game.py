@@ -53,14 +53,30 @@ while True:
         for p in options:
             if p == CPU:
                 print(f"CPU picks => {p} \n")
-        if CPU == options[1]:
+        if CPU == options[0]:
+            print(draw_msg)
+            break
+        elif CPU == options[1]:
             print(loss_msg)
             break
         elif CPU == options[2]:
             print(win_msg)
             break
-        else:
+
+    # player picks paper
+    elif pick == "paper":
+        print(f"user picks => paper {paper}")
+        for p in options:
+            if p == CPU:
+                print(f"CPU picks => {p} \n")
+        if CPU == options[0]:
+            print(win_msg)
+            break
+        elif CPU == options[1]:
             print(draw_msg)
+            break
+        elif CPU == options[2]:
+            print(loss_msg)
             break
     else:
         print("gameover")
